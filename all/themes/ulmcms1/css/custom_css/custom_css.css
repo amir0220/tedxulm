@@ -3,14 +3,54 @@ Custom CSS per-site can go here
 */
 
 body {
-  background: url('../../images/landing.jpg') no-repeat top center;
+  background: url('../../images/gopro6-red.png') no-repeat top center;
   background-size: cover;
   background-attachment: fixed;
   color: white;
+  display: block;
+}
+
+#header {
+  border-top: 1px solid #e62b1e;
+  margin-top: 1em;
+}
+
+#header #logo img {
+  width: 1024px;
+  height: auto;
+}
+
+#header #secondary-menu{
+  margin: 0em;
+  position: absolute;
+  top: 72px;
+  width: 1024px;
+}
+
+#content, .no-sidebars #content {
+  margin-right: -1024px;
+}
+
+#secondary-menu a {
+  float: right;
+  display: inline-block;
+  z-index: 10;
+  position: relative;
+  margin: 0.4em 0.5em;
+  background-color: #aaa;
+  padding: 0px 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+#secondary-menu a:hover {
+  color: white;
+  background-color: #777777;
 }
 
 #page-wrapper, .region-bottom, #content, .no-sidebars #content {
-  width: 900px;
+  width: 1024px;
 }
 
 #main {
@@ -18,21 +58,30 @@ body {
 }
 
 #main .section {
-  margin: 0 5px;
+  margin: 0px;
+}
+
+#navigation #main-menu li {
+  width: 20%;
+  text-align: center;
 }
 
 #navigation #main-menu {
-  margin-top: 3px;
+  margin-top: 0px;
+  background-color: black;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #e62b1e;
 }
 
 #navigation #main-menu a {
-  color: #aaa;
+  color: white;
   font-size: 13px;
   font-weight: bold;
 }
 
 #navigation #main-menu a:hover {
-  color: #eee;
+  color: #e62b1e;
+  text-decoration: none;
 }
 
 #page-wrapper {
@@ -42,8 +91,16 @@ body {
 #page #main #content {
   margin-top: 2em;
   color: black;
-  background-color: rgba(254, 254, 254, 0.92);
-  opacity: 0.92;
+  background-color: rgba(230, 230, 230, 1);
+  opacity: 0.95;
+}
+
+#page #content .section {
+  padding: 0 1.5em;
+}
+
+.page-home #page-title {
+  display: none;
 }
 
 .page-home #page #main #content {
@@ -52,19 +109,35 @@ body {
 }
 
 #page-title {
-  margin-bottom: 0.8em;
+  margin: 0.5em 0 0.8em 0;
 }
 
 #home-big-box {
-  width: 400px;
+  width: 600px;
   min-height: 200px;
-  border: 1px solid #f8f8f8;
-  padding: 2em 10em;
+  border: 2px solid #e62b1e;
+  padding: 1em 1.5em;
   text-align: center;
+  margin-top: 5em;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0px 0px 5px 5px #444;
   background-color: #222;
+}
+
+#home-big-box #main-text {
+  padding: 0em 8em;
+}
+
+#home-big-box #bottom-text {
+  font-size: 12px;
+  line-height: 125%;
+  text-align: left;
+  padding-bottom: 5px;
+}
+
+#home-big-box #bottom-text h2 {
+  margin-bottom: 6px;
+  font-size: 15px;
 }
 
 .views-row {
@@ -104,8 +177,8 @@ body {
 }
 
 .views-field-field-speaker-image img {
-  height: 120px;
-  width: auto;
+  height: auto;
+  width: 120px;
   border: 3px outset dimgray;
   border-radius: 5px;
   background-color: #bbb;
@@ -127,7 +200,7 @@ body {
   min-height: 10px;
   width: 100%;
   border-top: 2px solid #e62b1e;
-  background-color: gray;
+  background-color: #555;
   position: fixed;
   bottom: 0;
   padding: 8px;
@@ -135,9 +208,84 @@ body {
 }
 
 #social-links a:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 #link {
-  margin: 0 2em;
+  margin: 0 4em;
+}
+
+
+
+#speakers-views-table {
+  margin-top: 0px;
+}
+
+#speakers-views-table td {
+  padding: 3em;
+  align: center;
+}
+
+.speaker-image {
+  border: 2px solid;
+  height: 220px;
+  width: 220px;
+  background-color: #666;
+  display: inline-block;
+}
+
+.speaker-image:hover {
+  opacity: 0.8;
+  background-color: #444;
+  cursor: pointer;
+}
+
+.speaker-image img {
+  max-width: 96%;
+  max-height: 96%;
+  padding: 4px;
+}
+
+.speaker-details {
+  border: 2px solid #aaa;
+  padding: 5px;
+  background-color: #ccc;
+  position: absolute;
+  z-index: 10;
+  margin-top: -16.5em;
+  text-align: left;
+  opacity: 0.97;
+}
+
+.speaker-details-0 {
+  display: block;
+  margin-left: 23.4em;
+  margin-right: 1.5em;
+}
+
+.speaker-details-1 {
+  display: block;
+  margin-right: 27.9em;
+  margin-left: -39em;
+}
+
+#speaker-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#speaker-bio {
+  font-size: 13px;
+}
+
+#speaker-links {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+.block {
+  display: block;
 }

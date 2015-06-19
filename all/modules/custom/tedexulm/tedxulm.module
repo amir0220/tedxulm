@@ -17,16 +17,27 @@ function tedxulm_home_page() {
   $rtn = "";
 
   $rtn .= "
-    <div id='home-big-box'>
-        <h1 style='font-size: 180%;'>TEDx is coming to Monroe!
-            <br \>
-            <b style='font-size: 140%;'>July 20, 2015</b>
-        </h1>
-        <h3>at the Brown Theatre at the University of Louisiana at Monroe</h3>
+     <div id='home-big-box'>
+        <div id='main-text'>
+            <h1 style='font-size: 180%;'>TEDx is coming to Monroe!
+                <br \>
+                <b style='font-size: 140%;'>October 9, 2015</b>
+            </h1>
+            <h3>at Stubbs Auditorium at the University of Louisiana at Monroe</h3>
 
-        <h5>Speaker details and ticket information coming soon! <br \>
-            Questions? Contact tedexulm@gmail.com
-        </h5>
+            <h5>Speaker details and ticket information coming soon! <br \>
+                        Questions? Contact tedexulm@gmail.com
+            </h5>
+        </div>
+        <div id='bottom-text'>
+            <h2>What is TEDx?</h2>
+
+            In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local,
+            self-organized events that bring people together to share a TED-like experience. Our event is called TEDxULM,
+            where x = independently organized TED event. At our TEDxULM event, TEDTalks video and live speakers will combine
+            to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the
+            TEDx program, but individual TEDx events, including ours, are self-organized.
+        </div>
     </div>
   ";
   return $rtn;
@@ -38,12 +49,40 @@ function tedxulm_form_alter(&$form, &$form_state, $form_id) {
   //dpm($form_id);
 
   if ($form_id == 'speaker_node_form') {
+    $form['#validate'][] = 'speaker_node_form_validate';
     $form['actions']['submit']['#submit'][] = 'speaker_node_form_submit';
     dpm($form);
   }
 }
 
-function speaker_node_form_submit($form, &$form_state) {
-  dpm(array("here"=>"here"));
+function speaker_node_form_validate($form, &$form_state) {
   dpm($form_state);
+}
+
+function speaker_node_form_submit($form, &$form_state) {
+  /*
+  if (empty($form_state['values']['field_speaker_image']['und'])) {
+    $file = file_load('5');
+    $form_state['values']['field_speaker_image']['und'][0]['fid'] = $file->fid;
+    $form_state['values']['field_speaker_image']['und'][0]['uid'] = $file->uid;
+    $form_state['values']['field_speaker_image']['und'][0]['filename'] = $file->filename;
+    $form_state['values']['field_speaker_image']['und'][0]['uri'] = $file->uri;
+    $form_state['values']['field_speaker_image']['und'][0]['filemime'] = $file->filemime;
+    $form_state['values']['field_speaker_image']['und'][0]['filesize'] = $file->filesize;
+    $form_state['values']['field_speaker_image']['und'][0]['status'] = $file->status;
+    $form_state['values']['field_speaker_image']['und'][0]['timestamp'] = $file->timestamp;
+    $form_state['values']['field_speaker_image']['und'][0]['rdf_mapping'] = $file->rdf_mapping;
+    $form_state['values']['field_speaker_image']['und'][0]['alt'] = '';
+    $form_state['values']['field_speaker_image']['und'][0]['title'] = '';
+    $form_state['values']['field_speaker_image']['und'][0]['width'] = '247';
+    $form_state['values']['field_speaker_image']['und'][0]['height'] = '247';
+  }
+  */
+  dpm($form_state);
+
+}
+
+
+function tedxulm_init() {
+  drupal_add_js(drupal_get_path('module', 'tedxulm') . '/tedxulm.js');
 }
